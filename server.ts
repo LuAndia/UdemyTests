@@ -2,7 +2,7 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res, next) => {
-    res.send("Tour Booking API");
+    res.send("Tour Booking API HEHE");
 });
 
 app.get("/tours", (req, res, next) => {
