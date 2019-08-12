@@ -1,0 +1,14 @@
+[
+    {
+        "tourID" : "id-0",
+        "reviewTitle" : "Great value to money",
+        "reviewlongText" : "This one of the best experiences I have had...",
+        "stars" : 5
+    },
+    {
+        "tourID" : "id-0",
+        "reviewTitle" : "Paris is beatiful in the evening",
+        "reviewlongText" : "This was a nice tour! However, the Audio Guide...",
+        "stars" : 4
+    }
+]
