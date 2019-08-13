@@ -19,13 +19,24 @@ const apiGetTourDetail_1 = require("./api/tours/apiGetTourDetail");
 const apiCreateTour_1 = require("./api/tours/apiCreateTour");
 const apiDeleteTour_1 = require("./api/tours/apiDeleteTour");
 const apiUpdateTour_1 = require("./api/tours/apiUpdateTour");
+const authenticator = (req, res, next) => {
+    const username = "Andy123";
+    req.user = username;
+    next();
+};
+const logger = (req, res, next) => {
+    console.log("User: " + req.user + " - " + new Date() + " - " + req.method + " Request to " + req.path);
+    next();
+};
+app.use(authenticator);
+app.use(logger);
 // console.log(DataStore.tours);
 // console.log(JSON.stringify(DataStore.tours));
 // console.log(JSON.parse(JSON.stringify(DataStore.tours)));
 app.get("/", (req, res, next) => {
     res.send("TourBooking API");
 });
-app.get("/tours", apiGetTours_1.apiGetTours);
+app.get("/tours", logger, apiGetTours_1.apiGetTours);
 app.get("/tours/:id", apiGetTourDetail_1.apiGetTourDetail);
 app.post("/tours", jsonParser, apiCreateTour_1.apiCreateTour);
 app.delete("/tours/:id", apiDeleteTour_1.apiDeleteTour);
