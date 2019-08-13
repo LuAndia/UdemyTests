@@ -3,6 +3,7 @@ const app = express();
 
 import * as bodyparser from "body-parser";
 const jsonParser = bodyparser.json();
+const urlEncodedParser = bodyparser.urlencoded({extended: true});
 
 import { DataStore } from "./data/data";
 import { apiGetTours } from "./api/tours/apiGetTours";
@@ -30,7 +31,9 @@ import path from "path";
 // app.use(logger);
 
 import morgan from "morgan";
+import { apiUploadImage } from "./api/tours/apiUploadImage";
 const logger = morgan("dev");
+
 app.use(logger);
 
 app.use("/static", express.static(path.resolve("./", "public", "img")));
@@ -52,5 +55,7 @@ app.post("/tours", jsonParser, apiCreateTour);
 app.delete("/tours/:id", apiDeleteTour);
 
 app.patch("/tours/:id", jsonParser, apiUpdateTour);
+
+app.post("/tours/:id/img", apiUploadImage);
 
 app.listen(process.env.PORT || 8091, () => {console.log("Server started...")})
