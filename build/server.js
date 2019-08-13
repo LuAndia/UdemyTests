@@ -17,6 +17,7 @@ const jsonParser = bodyparser.json();
 const apiGetTours_1 = require("./api/tours/apiGetTours");
 const apiGetTourDetail_1 = require("./api/tours/apiGetTourDetail");
 const apiCreateTour_1 = require("./api/tours/apiCreateTour");
+const apiDeleteTour_1 = require("./api/tours/apiDeleteTour");
 // console.log(DataStore.tours);
 // console.log(JSON.stringify(DataStore.tours));
 // console.log(JSON.parse(JSON.stringify(DataStore.tours)));
@@ -26,4 +27,5 @@ app.get("/", (req, res, next) => {
 app.get("/tours", apiGetTours_1.apiGetTours);
 app.get("/tours/:id", apiGetTourDetail_1.apiGetTourDetail);
 app.post("/tours", jsonParser, apiCreateTour_1.apiCreateTour);
+app.delete("/tours/:id", apiDeleteTour_1.apiDeleteTour);
 app.listen(process.env.PORT || 8091, () => { console.log("Server started..."); });
