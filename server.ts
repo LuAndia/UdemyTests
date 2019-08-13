@@ -12,19 +12,23 @@ import { apiDeleteTour } from "./api/tours/apiDeleteTour";
 import { apiUpdateTour } from "./api/tours/apiUpdateTour";
 import { CustomRequestHandler } from "./model/express";
 
-const authenticator: CustomRequestHandler  = (req, res, next) => {
-    const username = "Andy123";
-    req.user = username;
-    next();
-}
+// const authenticator: CustomRequestHandler  = (req, res, next) => {
+//     const username = "Andy123";
+//     req.user = username;
+//     next();
+// }
 
-const logger: CustomRequestHandler = (req, res, next) => {
-    console.log("User: " + req.user + " - " + new Date() + " - " + req.method + " Request to " + req.path);
-    next();
-}
+// const logger: CustomRequestHandler = (req, res, next) => {
+//     console.log("User: " + req.user + " - " + new Date() + " - " + req.method + " Request to " + req.path);
+//     next();
+// }
 
-app.use(authenticator);
+// app.use(authenticator);
 
+// app.use(logger);
+
+import morgan from "morgan";
+const logger = morgan("dev");
 app.use(logger);
 
 // console.log(DataStore.tours);
