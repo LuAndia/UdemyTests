@@ -11,6 +11,8 @@ import { apiCreateTour } from "./api/tours/apiCreateTour";
 import { apiDeleteTour } from "./api/tours/apiDeleteTour";
 import { apiUpdateTour } from "./api/tours/apiUpdateTour";
 import { CustomRequestHandler } from "./model/express";
+import path from "path";
+
 
 // const authenticator: CustomRequestHandler  = (req, res, next) => {
 //     const username = "Andy123";
@@ -30,6 +32,8 @@ import { CustomRequestHandler } from "./model/express";
 import morgan from "morgan";
 const logger = morgan("dev");
 app.use(logger);
+
+app.use("/static", express.static(path.resolve("./", "public", "img")));
 
 // console.log(DataStore.tours);
 // console.log(JSON.stringify(DataStore.tours));
