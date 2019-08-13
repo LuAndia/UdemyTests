@@ -32,6 +32,7 @@ import path from "path";
 
 import morgan from "morgan";
 import { apiUploadImage } from "./api/tours/apiUploadImage";
+import { apiErrorHandler } from "./api/general/errorHandling";
 const logger = morgan("dev");
 
 app.use(logger);
@@ -57,5 +58,7 @@ app.delete("/tours/:id", apiDeleteTour);
 app.patch("/tours/:id", jsonParser, apiUpdateTour);
 
 app.post("/tours/:id/img", apiUploadImage);
+
+app.use(apiErrorHandler);
 
 app.listen(process.env.PORT || 8091, () => {console.log("Server started...")})
