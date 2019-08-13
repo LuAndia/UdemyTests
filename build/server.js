@@ -19,16 +19,19 @@ const apiGetTourDetail_1 = require("./api/tours/apiGetTourDetail");
 const apiCreateTour_1 = require("./api/tours/apiCreateTour");
 const apiDeleteTour_1 = require("./api/tours/apiDeleteTour");
 const apiUpdateTour_1 = require("./api/tours/apiUpdateTour");
-const authenticator = (req, res, next) => {
-    const username = "Andy123";
-    req.user = username;
-    next();
-};
-const logger = (req, res, next) => {
-    console.log("User: " + req.user + " - " + new Date() + " - " + req.method + " Request to " + req.path);
-    next();
-};
-app.use(authenticator);
+// const authenticator: CustomRequestHandler  = (req, res, next) => {
+//     const username = "Andy123";
+//     req.user = username;
+//     next();
+// }
+// const logger: CustomRequestHandler = (req, res, next) => {
+//     console.log("User: " + req.user + " - " + new Date() + " - " + req.method + " Request to " + req.path);
+//     next();
+// }
+// app.use(authenticator);
+// app.use(logger);
+const morgan_1 = __importDefault(require("morgan"));
+const logger = morgan_1.default("dev");
 app.use(logger);
 // console.log(DataStore.tours);
 // console.log(JSON.stringify(DataStore.tours));
